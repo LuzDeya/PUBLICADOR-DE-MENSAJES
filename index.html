@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicador de mensajes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <h1>Publicador de mensajes</h1>
+      <p class="subtitulo">Envía una publicación a la API de prueba JSONPlaceholder</p>
+    </header>
+
+    <!-- Formulario: agrupa los campos y permite enviar con Enter o con el botón -->
+    <form id="formPublicacion" novalidate>
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" maxlength="100"
+               placeholder="Escribe el título" autocomplete="off">
+      </div>
+
+      <div class="campo">
+        <label for="contenido">Contenido</label>
+        <textarea id="contenido" name="contenido" rows="5" maxlength="500"
+                  placeholder="Escribe el contenido de la publicación"></textarea>
+      </div>
+
+      <!-- Solo para la demostración de errores -->
+      <div class="campo">
+        <label for="modoPrueba">Modo de prueba</label>
+        <select id="modoPrueba">
+          <option value="normal">Normal (envío correcto)</option>
+          <option value="http">Simular error HTTP (404)</option>
+          <option value="conexion">Simular error de conexión</option>
+        </select>
+      </div>
+
+      <button type="submit" id="btnPublicar">Publicar</button>
+    </form>
+
+    <!-- Mensajes de estado (validación, carga, éxito, error) -->
+    <div id="mensaje" class="mensaje oculto" role="status" aria-live="polite"></div>
+
+    <!-- Resultado devuelto por la API -->
+    <section id="resultado" class="resultado oculto" aria-labelledby="tituloResultado">
+      <h2 id="tituloResultado">Respuesta del servidor</h2>
+      <dl>
+        <dt>ID asignado</dt>   <dd id="resId"></dd>
+        <dt>Título</dt>        <dd id="resTitulo"></dd>
+        <dt>Contenido</dt>     <dd id="resContenido"></dd>
+        <dt>ID de usuario</dt> <dd id="resUsuario"></dd>
+      </dl>
+      <p class="nota">Nota: JSONPlaceholder simula la creación; los datos no se guardan permanentemente.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
